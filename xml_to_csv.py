@@ -27,6 +27,10 @@ if __name__ == '__main__':
             with open(xml_path, 'rb') as xml_file:
                 doc = xmltodict.parse(xml_file.read())
 
+            # the .xml files at
+            # https://www.juntadeandalucia.es/datosabiertos/portal/dataset/raif
+            # start with dataroot and have a single entry that does not start
+            # with @, hence the hardcoding here of these two variables
             for key in doc['dataroot'].keys():
                 if not key.startswith('@'):
                     doc = doc['dataroot'][key]
